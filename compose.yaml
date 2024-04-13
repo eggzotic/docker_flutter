@@ -1,0 +1,15 @@
+services:
+  basic-web:
+    container_name: my_first_cont_app
+    build:
+      context: .
+      target: base
+    # The first number is the host port and the second is the port inside the container.
+    ports:
+      - 8888:80
+    # This is useful for rapid-development purposes - avoids copying the app web-build output
+    #  and instead accesses it in place so the output of every fresh run of `flutter build web`
+    #  is ready-to-serve without any change/reload of the container.
+    # If using (uncommenting) the below, then be sure to comment-out "option 1" in the Dockerfile
+    #volumes:
+    #  - ./counter_app/build/web:/opt/html:ro
