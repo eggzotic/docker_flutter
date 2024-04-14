@@ -1,9 +1,14 @@
 services:
-  basic-web:
-    container_name: my_first_cont_app
+  flutter-web:
+    image: richardexaba/docker_flutter:latest
+    container_name: docker_flutter
     build:
       context: .
       target: base
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm64
     # The first number is the host port and the second is the port inside the container.
     ports:
       - 8888:80
